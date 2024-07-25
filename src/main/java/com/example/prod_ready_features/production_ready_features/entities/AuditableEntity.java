@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 @Audited
 public class AuditableEntity {
     @CreatedDate
-    @Column(nullable = false,updatable = false)
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdDate;
 
     @LastModifiedDate
