@@ -3,8 +3,10 @@ package com.example.prod_ready_features.production_ready_features.clients.impl;
 import com.example.prod_ready_features.production_ready_features.advice.ApiResponse;
 import com.example.prod_ready_features.production_ready_features.clients.EmployeeClient;
 import com.example.prod_ready_features.production_ready_features.dto.EmployeeDTO;
+import com.example.prod_ready_features.production_ready_features.exceptions.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -55,6 +57,10 @@ public class EmployeeClientImpl implements EmployeeClient {
                     .uri("employees")
                     .body(employeeDTO)
                     .retrieve()
+                    .onStatus(HttpStatusCode::is4xxClientError, ((request, response) -> {
+                        System.out.println("Error occurred" + response.getBody().readAllBytes());
+                        throw new ResourceNotFoundException("could not create the new employee");
+                    }))
                     .toEntity(new ParameterizedTypeReference<>() {
                     });
             return employeeDTOApiResponse.getBody().getData();
