@@ -9,5 +9,5 @@ public interface EmployeeClient {
 
     EmployeeDTO getEmployeeById(Long employeeId);
 
-    EmployeeDTO createNewEmployee(EmployeeDTO employeeDTO);
+    EmployeeDTO createNewEmployees(EmployeeDTO employeeDTO);
 }

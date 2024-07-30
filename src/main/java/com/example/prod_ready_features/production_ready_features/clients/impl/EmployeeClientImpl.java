@@ -66,7 +66,7 @@ public class EmployeeClientImpl implements EmployeeClient {
     }
 
     @Override
-    public EmployeeDTO createNewEmployee(EmployeeDTO employeeDTO) {
+    public EmployeeDTO createNewEmployees(EmployeeDTO employeeDTO) {
         log.trace("Trying to create Employee with information {}", employeeDTO);
         try {
             ResponseEntity<ApiResponse<EmployeeDTO>> employeeDTOApiResponse = restClient.post()

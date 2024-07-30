@@ -38,7 +38,7 @@ class ProductionReadyFeaturesApplicationTests {
 	void createNewEmployeeTest() {
 		EmployeeDTO employeeDTO = new EmployeeDTO(null, "Anuj", "anuj@gmail.com", 20,
 				"USER", 5000.0, LocalDate.of(2020, 12, 1), true);
-		EmployeeDTO savedEmployeeDTO = employeeClient.createNewEmployee(employeeDTO);
+		EmployeeDTO savedEmployeeDTO = employeeClient.createNewEmployees(employeeDTO);
 		System.out.println(savedEmployeeDTO);
 	}
 }
